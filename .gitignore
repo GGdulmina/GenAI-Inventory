@@ -1,0 +1,7 @@
+build/
+dist/
+nbproject/private/
+*.class
+*.war
+*.jar
+!WEB-INF/lib/*.jar
