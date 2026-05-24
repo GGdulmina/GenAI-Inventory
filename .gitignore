@@ -1,7 +1,22 @@
-build/
-dist/
-nbproject/private/
+# NetBeans build output
+IMS_D43/build/
+IMS_D43/dist/
+
+# NetBeans private settings
+IMS_D43/nbproject/private/
+
+# Compiled Java classes
 *.class
-*.war
-*.jar
-!WEB-INF/lib/*.jar
+
+# NetBeans RS files
+*.rs
+
+# Python cache (if any exists in project)
+__pycache__/
+*.pyc
+*.pyo
+ai_api/venv/
+
+# OS files
+.DS_Store
+Thumbs.db
