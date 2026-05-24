@@ -1,6 +1,8 @@
 package Servlet;
 
 import dao.UserDAO;
+import model.User;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,26 +30,45 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
+
             UserDAO userDAO = new UserDAO();
 
-            boolean isValid = userDAO.validateUser(username, password);
+            // Authenticate user and get full user object
+            User user = userDAO.authenticate(username, password);
 
-            if (isValid) {
+            if (user != null) {
 
                 HttpSession session = request.getSession();
-                session.setAttribute("loggedInUser", username);
-                session.setMaxInactiveInterval(30 * 60); // 30 minutes
 
-                response.sendRedirect(request.getContextPath() + "/inventory");
+                // Store user info in session
+                session.setAttribute("user", user);
+                session.setAttribute("role", user.getRole());
+                session.setAttribute("username", user.getUsername());
+
+                session.setMaxInactiveInterval(30 * 60);
+
+                // Role-based redirect
+                if ("admin".equals(user.getRole())) {
+
+                    response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
+
+                } else {
+
+                    response.sendRedirect(request.getContextPath() + "/inventory");
+
+                }
 
             } else {
 
-                request.setAttribute("error", "Invalid username or password.");
+                request.setAttribute("error", "Invalid username or password");
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
+
             }
 
         } catch (Exception e) {
+
             throw new ServletException("Login error occurred", e);
+
         }
     }
 }
