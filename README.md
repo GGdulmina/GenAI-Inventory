@@ -13,15 +13,14 @@
 ---
 
 ## 📋 Table of Contents
-1. [System Architecture Overview](#-system-architecture-overview)
-2. [Functional System Requirements](#-functional-system-requirements)
-3. [Cross-Platform Deployment Pipelines](#-cross-platform-deployment-pipelines)
-   - [Windows Environment Installation](#-windows-environment-installation)
-   - [Linux Mint / Ubuntu Installation](#-linux-mint--ubuntu-installation)
-   - [macOS Environment Installation](#-macos-environment-installation)
-4. [Database Verification Profiles](#-database-verification-profiles)
-5. [System Access Credentials](#-system-access-credentials)
-6. [Mathematical Framework of AI Models](#-mathematical-framework-of-ai-models)
+1. [System Architecture Overview](#system-architecture-overview)
+2. [Functional System Requirements](#functional-system-requirements)
+3. [Cross-Platform Deployment Pipelines](#cross-platform-deployment-pipelines)
+   - [Windows Environment Installation](#windows-environment-installation)
+   - [Linux Mint / Ubuntu Installation](#linux-mint--ubuntu-installation)
+   - [macOS Environment Installation](#macos-environment-installation)
+4. [System Access Credentials](#system-access-credentials)
+5. [Mathematical Framework of AI Models](#mathematical-framework-of-ai-models)
 
 ---
 
@@ -104,8 +103,7 @@ pip install -r requirements.txt
 python app.py
 :: Engine starts hosting on network socket: http://localhost:5000
 ```
-
-🐧 Linux Mint / Ubuntu Installation
+### 🐧 Linux Mint / Ubuntu Installation
 1. Native Environment Setup & Package Validation
 
 Open your Bash terminal and update system package states to bring down required runtimes along with the isolated Python virtual environment builder:
@@ -148,7 +146,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-🍏 macOS Environment Installation
+### 🍏 macOS Environment Installation
 1. Runtime Environment Assembly via Homebrew
 
 Open your Zsh terminal session and execute the setup script:
@@ -207,7 +205,8 @@ String user = "root";
 - Perform an administrative reset within your integrated developer workspace environment by executing Clean and Build.
 - Click Run to deploy your compilation layout to the active Apache Tomcat container. Your system will launch the local entry portal automatically at http://localhost:8080/IMS_D43/.
 
-#🔐 System Access Credentials
+
+## 🔐 System Access Credentials
 The database contains preset administrative and staff testing accounts right out of the box:
 ```bash
 |Role Authorization  |   Username Alias  |   Default System Key  |
