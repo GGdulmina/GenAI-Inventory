@@ -12,13 +12,23 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Handles user login / authentication.
+ * Stores User object, role, and username in session.
+ * @author id43
+ */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        // If already logged in, go to dashboard
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("user") != null) {
+            response.sendRedirect(request.getContextPath() + "/dashboard");
+            return;
+        }
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
@@ -30,45 +40,24 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         try {
-
             UserDAO userDAO = new UserDAO();
-
-            // Authenticate user and get full user object
             User user = userDAO.authenticate(username, password);
 
             if (user != null) {
-
                 HttpSession session = request.getSession();
-
-                // Store user info in session
                 session.setAttribute("user", user);
                 session.setAttribute("role", user.getRole());
                 session.setAttribute("username", user.getUsername());
+                session.setAttribute("userId", user.getId());
+                session.setMaxInactiveInterval(30 * 60); // 30 minutes
 
-                session.setMaxInactiveInterval(30 * 60);
-
-                // Role-based redirect
-                if ("admin".equals(user.getRole())) {
-
-                    response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
-
-                } else {
-
-                    response.sendRedirect(request.getContextPath() + "/inventory");
-
-                }
-
+                response.sendRedirect(request.getContextPath() + "/dashboard");
             } else {
-
                 request.setAttribute("error", "Invalid username or password");
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
-
             }
-
         } catch (Exception e) {
-
             throw new ServletException("Login error occurred", e);
-
         }
     }
 }
