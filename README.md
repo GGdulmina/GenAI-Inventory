@@ -236,6 +236,7 @@ deactivate
 | Username | Password  |
 |----------|-----------|
 | `admin`  | `admin123`|
+| `staff1`  | `staff123`|
 
 > ⚠️ **Warning:** Change default credentials before deploying to any non-local environment.
 
@@ -257,8 +258,6 @@ deactivate
 
 ### AI Insights
 ![AI Insights](screenshots/ai_insights.png)
-
-> *Screenshots to be added after final deployment.*
 
 ---
 
@@ -301,22 +300,6 @@ These files are either machine-generated, environment-specific, or potentially c
 
 ---
 
-## 🚀 Future Improvements
-
-- **Better AI predictions** — extend the Flask API with more sophisticated forecasting models as more sales data accumulates.
-- **Role-based access control** — separate permission levels for admin, manager, and staff users.
-- **Report export** — PDF and CSV export for inventory and sales reports.
-- **Mobile-friendly UI** — improve Bootstrap layout for tablet and mobile viewports.
-- **REST API expansion** — expose inventory endpoints for potential integration with other systems.
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## 👤 Author
 
 **Dulmina**
@@ -326,3 +309,4 @@ Sri Lanka Institute of Advanced Technological Education (SLAITE)
 ---
 
 > Built as part of the Enterprise Architecture module — academic year 2024/2025.
+
