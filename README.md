@@ -1,292 +1,176 @@
-<div align="center">
+# 🗃️ GenAI-Inventory
 
-# 🗂️ GenAI-Inventory
+> A Smart Inventory Management System built with Java JSP/Servlets and a Python Flask AI microservice, backed by MySQL.
 
-### Smart Inventory Management System with AI-Powered Analytics
-
-*An enterprise-grade full-stack inventory platform integrating Java EE transactional operations with a Python Flask AI microservice for intelligent stock forecasting, sales trend analysis, and autonomous restock recommendations.*
-
----
-
-![Java](https://img.shields.io/badge/Java-17+-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![JSP](https://img.shields.io/badge/JSP-Jakarta%20EE-007396?style=for-the-badge&logo=java&logoColor=white)
-![Servlet](https://img.shields.io/badge/Servlet-Jakarta%20EE-007396?style=for-the-badge&logo=java&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-2.x-000000?style=for-the-badge&logo=flask&logoColor=white)
-![Apache Tomcat](https://img.shields.io/badge/Apache%20Tomcat-10+-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black)
-![Chart.js](https://img.shields.io/badge/Chart.js-4.x-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
-![REST API](https://img.shields.io/badge/REST-API-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-
-</div>
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![JSP](https://img.shields.io/badge/JSP-Servlet-007396?style=for-the-badge&logo=java&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Apache Tomcat](https://img.shields.io/badge/Apache_Tomcat-F8DC75?style=for-the-badge&logo=apache-tomcat&logoColor=black)
 
 ---
 
-## 📋 Project Overview
+## 📌 Project Overview
 
-**GenAI-Inventory** is an AI-powered Smart Inventory Management System designed for academic and professional software engineering learning. The system demonstrates enterprise-grade multi-tier architecture by integrating a Java EE web application with a Python Flask AI microservice.
+**GenAI-Inventory** is a full-stack inventory management system developed as a university software engineering project. It combines a Java EE web application with a lightweight Python Flask API to provide both core inventory operations and AI-assisted analytics.
 
-| Layer | Technology | Responsibility |
-|-------|-----------|----------------|
-| Web Application | Java EE (JSP / Servlets) | Core transactional business operations |
-| AI Microservice | Python Flask (REST API) | Predictive analytics and AI-driven insights |
-| Database | MySQL | Persistent relational data storage |
-| Frontend | Bootstrap + Chart.js | Responsive UI and data visualization |
+- The **Java web application** (`IMS_D43`) handles all core business logic: authentication, product management, sales recording, and report generation — deployed on Apache Tomcat.
+- The **Flask AI microservice** (`ai_api`) exposes REST endpoints that analyse inventory and sales data to generate restocking recommendations and sales trend insights.
+- **MySQL** serves as the persistent data store for both layers.
 
-> This project was developed as part of a university software engineering curriculum and serves as a portfolio demonstration of full-stack development, service-oriented architecture, and applied AI integration.
+This project was built for academic purposes and demonstrates practical integration of Java EE and Python microservices in a multi-tier architecture.
 
 ---
 
-## ✨ System Features
+## ✨ Features
 
-### 🔐 Authentication Module
-- Secure login and session management
-- Role-based access control (Admin / Staff)
-- Session timeout and logout handling
-- User account management
+### 🔐 Authentication
+- User login and session management
+- Session-based access control
 
-### 📦 Inventory Module
-- Full product CRUD operations (Create, Read, Update, Delete)
+### 📦 Inventory Management
+- Add, update, and remove products
 - Real-time stock level tracking
-- Low stock threshold alerts and monitoring
-- Category and supplier management
+- Low-stock alerts
 
-### 🧾 Sales Module
-- Point-of-sale billing and invoice generation
-- Sales transaction recording
-- Sales history with date-range filtering
-- Stock auto-deduction on sale completion
+### 🧾 Sales Management
+- Record sales transactions
+- Invoice and billing support
+- Sales history view
 
-### 📊 Reporting Module
-- Interactive dashboard with KPI metrics
-- Sales and inventory reports generation
-- Data visualization via Chart.js (bar, line, pie charts)
-- Exportable report summaries
+### 📊 Dashboard & Reports
+- Sales and inventory summary dashboard
+- Visual analytics with Chart.js
+- Exportable reports
 
-### 🤖 AI Features *(via Python Flask Microservice)*
-- AI-powered inventory insights and pattern recognition
-- Automated restock quantity prediction
-- Sales trend analysis and forecasting
-- Inventory turnover intelligence
-- Contextual AI recommendations for procurement decisions
-
----
-
-## 🏗️ System Architecture
-
-### Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        CLIENT BROWSER                           │
-│              (HTML / CSS / Bootstrap / Chart.js)                │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │ HTTP Requests
-┌──────────────────────────▼──────────────────────────────────────┐
-│                    APACHE TOMCAT SERVER                          │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │                  PRESENTATION LAYER                       │  │
-│  │              JavaServer Pages (JSP Views)                 │  │
-│  └───────────────────────────┬───────────────────────────────┘  │
-│                              │                                   │
-│  ┌───────────────────────────▼───────────────────────────────┐  │
-│  │                  CONTROLLER LAYER                         │  │
-│  │              Java Servlets (Request Handling)             │  │
-│  └──────────────┬────────────────────────┬────────────────────  │
-│                 │                        │                       │
-│  ┌──────────────▼───────────┐  ┌─────────▼──────────────────┐  │
-│  │      DATA ACCESS LAYER   │  │    AI INTEGRATION LAYER    │  │
-│  │   DAO Pattern + JDBC     │  │   HTTP REST Client Calls   │  │
-│  └──────────────┬───────────┘  └─────────┬──────────────────┘  │
-└─────────────────│───────────────────────│───────────────────────┘
-                  │                        │
-┌─────────────────▼───────────┐  ┌─────────▼──────────────────────┐
-│       MySQL DATABASE        │  │   PYTHON FLASK AI MICROSERVICE  │
-│   (inventory_db)            │  │        (ai_api/)                │
-│                             │  │                                  │
-│  - products                 │  │  - /api/predict-restock          │
-│  - sales                    │  │  - /api/sales-trend              │
-│  - users                    │  │  - /api/insights                 │
-│  - categories               │  │  - /api/recommendations          │
-└─────────────────────────────┘  └──────────────────────────────────┘
-```
-
-### Layer Descriptions
-
-| Layer | Components | Description |
-|-------|-----------|-------------|
-| **Frontend** | JSP, HTML, CSS, Bootstrap 5, Chart.js | Responsive UI rendered server-side via JSP templates |
-| **Backend** | Java Servlets, DAO Pattern, JDBC, Tomcat 10 | Handles HTTP lifecycle, business logic, and DB operations |
-| **AI Layer** | Python 3, Flask, REST JSON API | Standalone microservice for ML-based predictions |
-| **Database** | MySQL 8 | Normalized relational schema for all transactional data |
-
----
-
-## 📁 Project Directory Structure
-
-```
-GenAI-Inventory/
-│
-├── IMS_D43/                          → Java EE Web Application (NetBeans Project)
-│   ├── src/
-│   │   └── java/
-│   │       ├── controller/           → Java Servlet controllers (HTTP request handlers)
-│   │       │   ├── LoginServlet.java
-│   │       │   ├── InventoryServlet.java
-│   │       │   ├── SalesServlet.java
-│   │       │   └── AIServlet.java
-│   │       ├── dao/                  → Data Access Objects (JDBC database operations)
-│   │       │   ├── ProductDAO.java
-│   │       │   ├── SalesDAO.java
-│   │       │   └── UserDAO.java
-│   │       ├── model/                → Entity/POJO classes
-│   │       │   ├── Product.java
-│   │       │   ├── Sale.java
-│   │       │   └── User.java
-│   │       └── util/                 → Utility classes (DB connection, helpers)
-│   │           └── DBConnection.java
-│   └── web/
-│       ├── WEB-INF/
-│       │   └── web.xml               → Servlet deployment descriptor
-│       ├── jsp/                      → JSP view pages
-│       │   ├── login.jsp
-│       │   ├── dashboard.jsp
-│       │   ├── inventory.jsp
-│       │   ├── sales.jsp
-│       │   └── ai_insights.jsp
-│       ├── css/                      → Stylesheets
-│       └── js/                       → JavaScript files (Chart.js configs)
-│
-├── ai_api/                           → Python Flask AI Microservice
-│   ├── app.py                        → Flask application entry point
-│   ├── requirements.txt              → Python dependencies
-│   ├── routes/                       → API route definitions
-│   │   ├── predict.py
-│   │   ├── trends.py
-│   │   └── insights.py
-│   └── models/                       → AI/ML logic and data processing
-│       └── inventory_model.py
-│
-├── inventory_db.sql                  → MySQL schema and seed data
-├── generate_sales.py                 → Sales data generation utility script
-└── README.md
-```
+### 🤖 AI Insights (Flask API)
+- Inventory restocking recommendations
+- Sales trend analysis
+- AI-powered stock movement predictions
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Technology | Version | Purpose |
-|-----------|---------|---------|
-| **Java** | JDK 17+ | Core backend language |
-| **JSP (JavaServer Pages)** | Jakarta EE | Server-side view rendering |
-| **Java Servlets** | Jakarta EE | HTTP request/response handling |
-| **MySQL** | 8.0+ | Relational database management |
-| **Flask** | 2.x | Python web framework for AI microservice |
-| **Python** | 3.10+ | AI/ML microservice language |
-| **JDBC** | Standard | Java database connectivity |
-| **Apache Tomcat** | 10+ | Java web application server |
-| **Bootstrap** | 5.x | Responsive CSS framework |
-| **Chart.js** | 4.x | Interactive data visualization |
+| Technology      | Role                                         |
+|-----------------|----------------------------------------------|
+| Java (JDK 17+)  | Core backend language                        |
+| JSP             | Server-side HTML rendering                   |
+| Java Servlets   | Request handling and business logic routing  |
+| JDBC            | Java-to-MySQL database connectivity          |
+| Apache Tomcat   | Java web application server                  |
+| MySQL           | Relational database for all application data |
+| Python 3        | AI microservice language                     |
+| Flask           | Lightweight REST API framework               |
+| Bootstrap       | Responsive frontend UI                       |
+| Chart.js        | Dashboard data visualisation                 |
 
 ---
 
-## ⚙️ Prerequisites
+## 📂 Project Structure
 
-### 🪟 Windows
-
-- [Java JDK 17+](https://adoptium.net/) — ensure `JAVA_HOME` is set in environment variables
-- [Apache Tomcat 10+](https://tomcat.apache.org/download-10.cgi) — configured in your IDE
-- [MySQL Server 8.0+](https://dev.mysql.com/downloads/mysql/) + MySQL Workbench (optional)
-- [Python 3.10+](https://www.python.org/downloads/) — ensure `pip` is available
-- [Git](https://git-scm.com/)
-- [NetBeans IDE 17+](https://netbeans.apache.org/) or [IntelliJ IDEA](https://www.jetbrains.com/idea/) with Jakarta EE support
-
-### 🐧 Linux (Ubuntu/Debian)
-
-```bash
-sudo apt update
-sudo apt install openjdk-17-jdk mysql-server python3.10 python3-pip git -y
 ```
-Download Apache Tomcat 10 from the [official site](https://tomcat.apache.org/download-10.cgi) or install via package manager.
-
-### 🍎 macOS
-
-```bash
-brew install openjdk@17 mysql python@3.10 git
-brew install --cask netbeans
+GenAI-Inventory/
+├── ai_api/                     # Python Flask AI microservice
+│   ├── app.py                  # Flask application entry point and API routes
+│   └── requirements.txt        # Python package dependencies
+│
+├── IMS_D43/                    # Java web application (NetBeans project)
+│   ├── src/                    # Java source files
+│   │   └── java/
+│   │       ├── dao/            # Data Access Objects (database layer)
+│   │       ├── model/          # Entity/model classes
+│   │       └── servlet/        # Servlet controllers
+│   ├── web/                    # Web resources
+│   │   ├── WEB-INF/
+│   │   │   └── web.xml         # Servlet configuration
+│   │   ├── *.jsp               # JSP view pages
+│   │   ├── css/                # Stylesheets
+│   │   └── js/                 # JavaScript files
+│   ├── build.xml               # Ant build file
+│   └── nbproject/              # NetBeans project metadata
+│
+├── generate_sales.py           # Utility script for generating sample sales data
+├── inventory_db.sql            # MySQL database schema and seed data
+└── README.md
 ```
-Install Apache Tomcat via `brew install tomcat` or download manually.
+
+---
+
+## ✅ Prerequisites
+
+Make sure the following are installed before setting up the project.
+
+| Requirement        | Version     | Notes                              |
+|--------------------|-------------|------------------------------------|
+| Java JDK           | 17+         | Required for building and running  |
+| Apache Tomcat      | 10+         | Java web application server        |
+| MySQL Server       | 8.0+        | Database server                    |
+| Python             | 3.10+       | For the Flask AI microservice      |
+| Git                | Latest      | Version control                    |
+| NetBeans IDE       | 17+         | Recommended Java IDE               |
 
 ---
 
 ## 🗄️ Database Setup
 
-### Step 1 — Start MySQL Service
+### 1. Start MySQL and create the database
+
+**Windows (MySQL Shell or Command Prompt):**
+```sql
+mysql -u root -p
+CREATE DATABASE inventory_db;
+EXIT;
+```
+
+**Linux / macOS:**
+```bash
+sudo mysql -u root -p
+```
+```sql
+CREATE DATABASE inventory_db;
+EXIT;
+```
+
+### 2. Import the schema and seed data
 
 **Windows:**
 ```cmd
-net start MySQL80
-```
-
-**Linux:**
-```bash
-sudo systemctl start mysql
-sudo systemctl enable mysql
-```
-
-**macOS:**
-```bash
-brew services start mysql
-```
-
-### Step 2 — Create the Database
-
-```sql
-CREATE DATABASE inventory_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-### Step 3 — Import the SQL Schema
-
-**Windows (Command Prompt):**
-```cmd
 mysql -u root -p inventory_db < inventory_db.sql
 ```
 
-**Linux / macOS (Terminal):**
+**Linux / macOS:**
 ```bash
 mysql -u root -p inventory_db < inventory_db.sql
 ```
 
-### Step 4 — Verify Tables
+### 3. Configure the database connection in the Java application
+
+Open `IMS_D43/src/java/dao/DBConnection.java` (or equivalent connection utility) and update the credentials:
+
+```java
+private static final String URL      = "jdbc:mysql://localhost:3306/inventory_db";
+private static final String USER     = "root";
+private static final String PASSWORD = "your_password";
+```
+
+### 4. Verify the tables
 
 ```sql
 USE inventory_db;
 SHOW TABLES;
 ```
 
-Expected tables: `users`, `products`, `categories`, `sales`, `sale_items`
-
-### Step 5 — Update JDBC Connection String
-
-In `IMS_D43/src/java/util/DBConnection.java`, update:
-
-```java
-private static final String URL      = "jdbc:mysql://localhost:3306/inventory_db";
-private static final String USER     = "root";
-private static final String PASSWORD = "your_mysql_password";
-```
-
 ---
 
-## 🐍 Python AI Microservice Setup
+## 🐍 Python AI API Setup
 
-> **Note:** The `ai_api/` directory is located at the project root — **not** inside `IMS_D43/`.
+The `ai_api` folder is located at the **project root**, not inside `IMS_D43`.
 
-A **Python virtual environment** isolates the project's dependencies from the global Python installation, preventing version conflicts across projects. Always activate the virtual environment before running the Flask API.
+It is recommended to use a **virtual environment** to isolate the project's Python dependencies from your system installation. This prevents version conflicts between projects.
 
-### 🪟 Windows
+### Windows
 
 ```cmd
 cd ai_api
@@ -296,12 +180,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-To deactivate the environment when done:
-```cmd
-deactivate
-```
-
-### 🐧 Linux
+### Linux
 
 ```bash
 cd ai_api
@@ -311,12 +190,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-To deactivate:
-```bash
-deactivate
-```
-
-### 🍎 macOS
+### macOS
 
 ```bash
 cd ai_api
@@ -326,237 +200,129 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-To deactivate:
+The API will start on `http://localhost:5000` by default.
+
+**To deactivate the virtual environment when finished:**
 ```bash
 deactivate
 ```
 
-### Verify the API is Running
+---
 
-The Flask server will start at:
-```
-http://localhost:5000
-```
+## ☕ Java Application Setup
 
-Test with:
-```bash
-curl http://localhost:5000/api/insights
-```
+### 1. Open the project in NetBeans
+- Launch NetBeans IDE.
+- Go to **File → Open Project** and select the `IMS_D43` folder.
+
+### 2. Configure Apache Tomcat
+- Go to **Tools → Servers → Add Server**.
+- Select **Apache Tomcat** and point it to your Tomcat installation directory.
+
+### 3. Configure database credentials
+- Update `DBConnection.java` with your MySQL username and password (see [Database Setup](#-database-setup)).
+
+### 4. Build and Run
+- Right-click the project in the Projects panel and select **Clean and Build**.
+- Click **Run Project** (or press `F6`).
+- Tomcat will start and the application will open in your browser at `http://localhost:8080/IMS_D43/`.
+
+> **Note:** Make sure the Python Flask API is running before accessing any AI Insights features in the application.
 
 ---
 
-## ☕ Java Web Application Deployment
+## 🔑 Default Login Credentials
 
-### Using NetBeans IDE
+| Username | Password  |
+|----------|-----------|
+| `admin`  | `admin123`|
 
-1. Open NetBeans → **File → Open Project** → select the `IMS_D43/` folder
-2. Right-click the project → **Properties → Run** → configure your Apache Tomcat 10 server
-3. Ensure the JDBC MySQL Connector JAR is present in `WEB-INF/lib/`
-4. Right-click project → **Clean and Build** to compile and package as a `.war` file
-5. Right-click project → **Run** to deploy to Tomcat and launch the browser
-
-### Manual WAR Deployment
-
-```bash
-# Build the WAR file via NetBeans or Maven, then:
-cp IMS_D43/dist/IMS_D43.war $CATALINA_HOME/webapps/
-$CATALINA_HOME/bin/startup.sh   # Linux/macOS
-$CATALINA_HOME\bin\startup.bat  # Windows
-```
-
-Access the application at:
-```
-http://localhost:8080/IMS_D43
-```
-
-> **Note:** Ensure the Python Flask API (`ai_api/`) is running before accessing AI Insights features within the web application.
-
----
-
-## 🔑 Default System Credentials
-
-> ⚠️ **Security Warning:** These are development-only credentials. **Change all default passwords before deploying to any production or public-facing environment.**
-
-| Role | Username | Password |
-|------|----------|----------|
-| Administrator | `admin` | `admin123` |
-| Staff | `staff` | `staff123` |
-
----
-
-## 🔄 API Communication Flow
-
-### Transactional Data Flow (Java ↔ MySQL)
-
-```
-Browser Request
-     │
-     ▼
-JSP View  ──→  Java Servlet  ──→  DAO Layer  ──→  MySQL Database
-                  (Controller)      (JDBC)          (inventory_db)
-     ▲                                                    │
-     └────────────────────────────────────────────────────┘
-                       Response rendered via JSP
-```
-
-### AI Analytics Flow (Java ↔ Flask)
-
-```
-JSP AI Insights Page
-     │
-     ▼
-AIServlet.java  ──→  HTTP REST Request  ──→  Flask AI API (localhost:5000)
-                                                     │
-                                              AI Model Processing
-                                                     │
-     ◀──────────────────  JSON Response  ────────────┘
-     │
-     ▼
-JSP renders AI predictions and recommendations
-```
-
-**Example REST Endpoints exposed by the Flask API:**
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/insights` | General inventory AI insights |
-| `POST` | `/api/predict-restock` | Restock quantity prediction for a product |
-| `GET` | `/api/sales-trend` | Sales trend analysis over time |
-| `GET` | `/api/recommendations` | Procurement recommendations |
+> ⚠️ **Warning:** Change default credentials before deploying to any non-local environment.
 
 ---
 
 ## 📸 Screenshots
 
-> *Add screenshots to the `/docs/screenshots/` directory and update the paths below.*
-
 ### Login Page
-![Login Page](docs/screenshots/login.png)
+![Login Page](screenshots/login.png)
 
 ### Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.png)
 
 ### Inventory Management
-![Inventory Page](docs/screenshots/inventory.png)
+![Inventory](screenshots/inventory.png)
 
-### Sales Module
-![Sales Page](docs/screenshots/sales.png)
+### Sales Page
+![Sales](screenshots/sales.png)
 
 ### AI Insights
-![AI Insights](docs/screenshots/ai_insights.png)
+![AI Insights](screenshots/ai_insights.png)
+
+> *Screenshots to be added after final deployment.*
 
 ---
 
-## 🔒 Security Recommendations
+## 🔒 Security Notes
 
-For any deployment beyond a local development environment, apply the following practices:
+This is an academic project. Before using in any production or publicly accessible environment:
 
-| Concern | Recommendation |
-|---------|---------------|
-| **Password Storage** | Hash passwords using `bcrypt` (Python) or `BCrypt` (Java) — never store plaintext |
-| **SQL Injection** | Use `PreparedStatement` exclusively in all DAO classes; never concatenate user input into SQL |
-| **Environment Variables** | Store DB credentials, API keys, and secrets in environment variables or a `.env` file, never hardcoded |
-| **HTTPS** | Configure SSL/TLS on Apache Tomcat using a valid certificate; redirect all HTTP to HTTPS |
-| **Secret Management** | Add `.env`, `venv/`, and credential files to `.gitignore` before the first commit |
-| **CORS Policy** | Restrict Flask API CORS origins to only the Tomcat application host |
-| **Session Security** | Set session timeouts and use `HttpOnly` / `Secure` cookie flags in `web.xml` |
+- Hash passwords using a secure algorithm (e.g., bcrypt) — plain-text password storage is not acceptable in production.
+- Use environment variables or a secrets manager for database credentials; never hard-code them.
+- Use prepared statements (parameterised queries) throughout the DAO layer to prevent SQL injection.
+- Configure HTTPS on Tomcat using a valid SSL certificate.
+- Never commit credentials, API keys, or `.env` files to version control.
 
 ---
 
-## 🗂️ GitHub Best Practices & `.gitignore`
+## 🚫 GitHub — What Not to Commit
 
-Ensure the following are **never committed** to version control:
+Make sure your `.gitignore` excludes the following:
 
 ```gitignore
-# Python virtual environment
-venv/
-__pycache__/
-*.pyc
-*.pyo
-.env
-
 # Java build artifacts
 build/
 dist/
 *.class
 *.war
-*.jar
 
-# NetBeans IDE metadata
+# NetBeans private config
 nbproject/private/
-nbbuild/
-.nb-gradle/
 
-# MySQL credentials / dumps with sensitive data
-*.sql.bak
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
 
-# OS artifacts
-.DS_Store
-Thumbs.db
+# Environment files
+.env
 ```
 
-> Initialize `.gitignore` **before your first `git add`** to avoid accidentally pushing sensitive files or IDE-specific clutter.
+These files are either machine-generated, environment-specific, or potentially contain sensitive data.
 
 ---
 
 ## 🚀 Future Improvements
 
-| Feature | Description |
-|---------|-------------|
-| 🐳 **Docker Deployment** | Containerize both the Java app and Flask API using Docker Compose for environment-independent deployment |
-| 🔐 **JWT Authentication** | Replace session-based auth with stateless JWT tokens for improved API security |
-| ☁️ **Cloud Hosting** | Deploy on AWS, GCP, or Azure with managed MySQL (RDS / Cloud SQL) |
-| 🧠 **Advanced AI Forecasting** | Integrate time-series models (Prophet, LSTM) for higher-accuracy demand forecasting |
-| 📱 **Mobile Application** | Develop a companion mobile app (Android/iOS) consuming the REST API |
-| 👥 **Role-Based Access Control** | Implement fine-grained RBAC with multiple user roles and permission sets |
-| 📬 **Notification System** | Email/SMS alerts for low stock thresholds and restock triggers |
-| 📦 **Supplier Integration** | API integration with supplier systems for automated purchase order creation |
+- **Better AI predictions** — extend the Flask API with more sophisticated forecasting models as more sales data accumulates.
+- **Role-based access control** — separate permission levels for admin, manager, and staff users.
+- **Report export** — PDF and CSV export for inventory and sales reports.
+- **Mobile-friendly UI** — improve Bootstrap layout for tablet and mobile viewports.
+- **REST API expansion** — expose inventory endpoints for potential integration with other systems.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
-
-```
-MIT License
-
-Copyright (c) 2024 GenAI-Inventory Contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-```
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 👥 Contributors
+## 👤 Author
 
-| Name | Role | GitHub |
-|------|------|--------|
-| *Your Full Name* | Lead Developer | [@your-github](https://github.com/your-github) |
-| *Team Member 2* | Backend Developer | [@teammate2](https://github.com/teammate2) |
-| *Team Member 3* | AI Integration | [@teammate3](https://github.com/teammate3) |
-| *Team Member 4* | Frontend & UI | [@teammate4](https://github.com/teammate4) |
-
-> Developed as a group project for the **Enterprise Architecture** module — *Higher National Diploma in Information Technology (HNDIT), NVQ Level 6*.
+**Dulmina**
+Higher National Diploma in Information Technology (NVQ Level 6)
+Sri Lanka Institute of Advanced Technological Education (SLAITE)
 
 ---
 
-<div align="center">
-
-*Built with Java EE, Python Flask, and a commitment to clean architecture.*
-
-⭐ If this project was helpful, consider giving it a star on GitHub.
-
-</div>
+> Built as part of the Enterprise Architecture module — academic year 2024/2025.
