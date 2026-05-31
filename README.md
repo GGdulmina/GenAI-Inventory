@@ -1,4 +1,4 @@
-# 🗃️ GenAI-Inventory
+# GenAI-Inventory
 
 > A Smart Inventory Management System built with Java JSP/Servlets and a Python Flask AI microservice, backed by MySQL.
 
