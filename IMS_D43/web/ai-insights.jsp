@@ -94,7 +94,7 @@
 <div class="sidebar d-flex flex-column">
     <div class="brand">
         <div class="brand-icon"><i class="bi bi-box-seam-fill"></i></div>
-        <span>Smart IMS</span>
+        <span>GenAI-Inventory</span>
     </div>
     <nav class="nav flex-column">
         <a class="nav-link" href="dashboard"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>

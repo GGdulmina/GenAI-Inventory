@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reports – Smart IMS</title>
+    <title>Reports – GenAI-Inventory</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -92,7 +92,7 @@
 <div class="sidebar d-flex flex-column">
     <div class="brand">
         <div class="brand-icon"><i class="bi bi-box-seam-fill"></i></div>
-        <span>Smart IMS</span>
+        <span>GenAI-Inventory</span>
     </div>
     <nav class="nav flex-column">
         <a class="nav-link" href="dashboard"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
@@ -164,13 +164,18 @@
         <!-- Table -->
         <div class="col-lg-7">
             <div class="card-dark">
-                <h6 style="color:#fff; font-weight:600; margin-bottom:16px;">
-                    <c:choose>
-                        <c:when test="${reportType == 'daily'}"><i class="bi bi-calendar-day me-1"></i> Daily Report – ${dateParam}</c:when>
-                        <c:when test="${reportType == 'monthly'}"><i class="bi bi-calendar-month me-1"></i> Monthly Report – ${monthParam}</c:when>
-                        <c:otherwise><i class="bi bi-box-seam me-1"></i> Stock Report</c:otherwise>
-                    </c:choose>
-                </h6>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="mb-0" style="color:#fff; font-weight:600;">
+                        <c:choose>
+                            <c:when test="${reportType == 'daily'}"><i class="bi bi-calendar-day me-1"></i> Daily Report – ${dateParam}</c:when>
+                            <c:when test="${reportType == 'monthly'}"><i class="bi bi-calendar-month me-1"></i> Monthly Report – ${monthParam}</c:when>
+                            <c:otherwise><i class="bi bi-box-seam me-1"></i> Stock Report</c:otherwise>
+                        </c:choose>
+                    </h6>
+                    <a href="reports?action=downloadPdf&type=${reportType}&date=${dateParam}&month=${monthParam}" class="btn btn-purple btn-sm">
+                        <i class="bi bi-file-earmark-pdf-fill me-1"></i> Download PDF
+                    </a>
+                </div>
                 <div class="table-responsive" style="max-height:500px; overflow-y:auto;">
                     <table class="table table-dark-custom mb-0">
                         <c:choose>

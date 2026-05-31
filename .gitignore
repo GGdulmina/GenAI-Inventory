@@ -21,3 +21,7 @@ ai_api/venv/
 .DS_Store
 Thumbs.db
 venv/
+IMS_D43/lib/
+IMS_D43/web/WEB-INF/lib/
+nbproject/
+*.class

@@ -72,7 +72,7 @@
 <body>
 <div class="login-card">
     <div class="brand-icon"><i class="bi bi-box-seam-fill"></i></div>
-    <h2>Smart IMS</h2>
+    <h2>GenAI-Inventory</h2>
     <p class="subtitle">Inventory Management System with AI Insights</p>
 
     <% if (request.getAttribute("error") != null) { %>
